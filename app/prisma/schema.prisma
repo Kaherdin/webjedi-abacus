@@ -1,0 +1,59 @@
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+    output = "/home/ubuntu/webjedi_portfolio/app/node_modules/.prisma/client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  techStack   String[] // Array of technologies used
+  year        Int
+  client      String?
+  challenge   String   @db.Text
+  solution    String   @db.Text
+  results     String   @db.Text
+  imageUrl    String?
+  slug        String   @unique
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("projects")
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @db.Text
+  tagline     String?
+  features    String[] // Array of key features
+  techStack   String[] // Array of technologies used
+  idealFor    String[] // Array of ideal client types
+  slug        String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("services")
+}
+
+model Lead {
+  id              String   @id @default(cuid())
+  name            String
+  email           String
+  phone           String?
+  subject         String
+  message         String   @db.Text
+  serviceInterest String?
+  status          String   @default("new") // new, contacted, converted, closed
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("leads")
+}
