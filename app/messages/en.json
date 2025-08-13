@@ -1,5 +1,12 @@
 
 {
+  "metadata": {
+    "title": "WebJedi - Full-Stack Developer & AI Specialist",
+    "siteName": "WebJedi",
+    "description": "Aurélien Borst - Full-Stack Developer & AI Specialist crafting modern, eco-friendly web solutions that convert visitors into customers.",
+    "keywords": "web development,full-stack developer,AI specialist,eco-friendly websites,Next.js,React",
+    "author": "Aurélien Borst"
+  },
   "navigation": {
     "home": "Home",
     "services": "Services",

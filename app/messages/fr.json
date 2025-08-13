@@ -1,5 +1,12 @@
 
 {
+  "metadata": {
+    "title": "WebJedi - Développeur Full-Stack & Spécialiste IA",
+    "siteName": "WebJedi",
+    "description": "Aurélien Borst - Développeur Full-Stack & Spécialiste IA créant des solutions web modernes et éco-responsables qui convertissent vos visiteurs en clients.",
+    "keywords": "développement web,développeur full-stack,spécialiste IA,sites web éco-responsables,Next.js,React",
+    "author": "Aurélien Borst"
+  },
   "navigation": {
     "home": "Accueil",
     "services": "Services",
