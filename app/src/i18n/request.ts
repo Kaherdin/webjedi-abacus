@@ -1,13 +1,16 @@
-import {getRequestConfig} from 'next-intl/server';
-import {hasLocale} from 'next-intl';
-import {routing} from './routing';
+import { hasLocale } from "next-intl";
+import { getRequestConfig } from "next-intl/server";
+import { routing } from "./routing";
 
-export default getRequestConfig(async ({locale}) => {
-  // Validate that the incoming `locale` parameter is valid
-  const validLocale = locale && hasLocale(routing.locales, locale) ? locale : routing.defaultLocale;
+export default getRequestConfig(async ({ requestLocale }) => {
+  // Typically corresponds to the `[locale]` segment
+  const requested = await requestLocale;
+  const locale = hasLocale(routing.locales, requested)
+    ? requested
+    : routing.defaultLocale;
 
   return {
-    locale: validLocale,
-    messages: (await import(`../../messages/${validLocale}.json`)).default
+    locale,
+    messages: (await import(`../../messages/${locale}.json`)).default,
   };
 });
