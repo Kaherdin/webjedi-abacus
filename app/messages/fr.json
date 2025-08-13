@@ -1,0 +1,75 @@
+
+{
+  "navigation": {
+    "home": "Accueil",
+    "services": "Services",
+    "projects": "Projets",
+    "blog": "Blog",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "Développeur Full-Stack & Spécialiste IA",
+      "subtitle": "Création de solutions web modernes et éco-responsables qui convertissent vos visiteurs en clients",
+      "cta": "Démarrer Votre Projet",
+      "scroll": "Découvrir mon travail"
+    },
+    "services": {
+      "title": "Comment Je Peux Vous Aider",
+      "subtitle": "Du concept au déploiement, je construis des solutions digitales qui font grandir votre business"
+    },
+    "projects": {
+      "title": "Projets Récents", 
+      "subtitle": "Applications réelles construites avec des technologies modernes"
+    },
+    "cta": {
+      "title": "Prêt à Démarrer Votre Projet ?",
+      "subtitle": "Discutons de comment je peux vous aider à concrétiser votre vision",
+      "button": "Commencer"
+    }
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Solutions de développement web complètes adaptées à vos besoins"
+  },
+  "projects": {
+    "title": "Projets",
+    "subtitle": "Présentation d'applications réelles et de leur impact"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Insights sur le développement web, l'IA et l'innovation digitale",
+    "readMore": "Lire la Suite",
+    "publishedOn": "Publié le",
+    "by": "par",
+    "tags": "Tags",
+    "relatedPosts": "Articles Similaires"
+  },
+  "about": {
+    "title": "À Propos",
+    "subtitle": "Passionné par la création de solutions digitales efficaces et durables"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Discutons de votre projet",
+    "form": {
+      "name": "Nom",
+      "email": "Email",
+      "phone": "Téléphone (optionnel)",
+      "subject": "Sujet",
+      "message": "Message", 
+      "service": "Service d'Intérêt",
+      "submit": "Envoyer le Message",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé avec succès !",
+      "error": "Erreur lors de l'envoi. Veuillez réessayer."
+    }
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "notFound": "Page non trouvée",
+    "backToHome": "Retour à l'Accueil"
+  }
+}

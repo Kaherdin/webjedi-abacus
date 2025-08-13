@@ -4,23 +4,38 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Code, Sun, Moon } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import { Menu, X, Code, Sun, Moon, Globe } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from '@/lib/utils';
-
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Services', href: '/services' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
-];
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations('navigation');
   const { theme, setTheme } = useTheme();
+
+  const navigation = [
+    { name: t('home'), href: `/${locale}` },
+    { name: t('services'), href: `/${locale}/services` },
+    { name: t('projects'), href: `/${locale}/projects` },
+    { name: t('blog'), href: `/${locale}/blog` },
+    { name: t('about'), href: `/${locale}/about` },
+    { name: t('contact'), href: `/${locale}/contact` },
+  ];
+
+  const switchLocale = (newLocale: string) => {
+    const currentPath = pathname.replace(`/${locale}`, '');
+    return `/${newLocale}${currentPath}`;
+  };
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
@@ -31,7 +46,7 @@ export default function Navigation() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href={`/${locale}`} className="flex items-center space-x-2">
             <Code className="h-6 w-6 text-primary" />
             <span className="font-bold text-xl">Web Jedi</span>
           </Link>
@@ -54,8 +69,29 @@ export default function Navigation() {
             ))}
           </nav>
 
-          {/* Theme Toggle */}
-          <div className="flex items-center space-x-4">
+          {/* Theme Toggle & Language Switcher */}
+          <div className="flex items-center space-x-2">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="hidden sm:inline-flex">
+                  <Globe className="h-4 w-4 mr-2" />
+                  {locale.toUpperCase()}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem asChild>
+                  <Link href={switchLocale('en')}>
+                    🇺🇸 English
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href={switchLocale('fr')}>
+                    🇫🇷 Français
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
             <Button
               variant="ghost"
               size="icon"
