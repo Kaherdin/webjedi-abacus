@@ -1,5 +1,5 @@
 
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Badge } from "@/components/ui/badge";
@@ -138,30 +138,31 @@ Next.js 15 représente un pas significatif en avant dans le développement de fr
   }
 };
 
-export default function BlogPostPage({ 
+export default async function BlogPostPage({ 
   params 
 }: { 
-  params: { locale: string; slug: string } 
+  params: Promise<{ locale: string; slug: string }> 
 }) {
-  setRequestLocale(params.locale);
-  const t = useTranslations('blog');
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('blog');
   
-  const post = mockPostsContent[params.slug];
+  const post = mockPostsContent[slug];
   
-  if (!post || post.locale !== params.locale) {
+  if (!post || post.locale !== locale) {
     notFound();
   }
   
-  const dateLocale = params.locale === 'fr' ? fr : enUS;
+  const dateLocale = locale === 'fr' ? fr : enUS;
 
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
-          <Link href={`/${params.locale}/blog`}>
+          <Link href={`/${locale}/blog`}>
             <Button variant="ghost" className="mb-4">
               <ArrowLeftIcon className="h-4 w-4 mr-2" />
-              {params.locale === 'fr' ? 'Retour au Blog' : 'Back to Blog'}
+              {locale === 'fr' ? 'Retour au Blog' : 'Back to Blog'}
             </Button>
           </Link>
           
