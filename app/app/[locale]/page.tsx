@@ -1,77 +1,138 @@
-
 import Link from "next/link";
-import { getTranslations } from 'next-intl/server';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { ArrowDownIcon, CheckIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import ProjectCard from "@/components/project-card";
 
 const getFeaturedProjects = (locale: string) => [
   {
     id: "partager-newsletter-platform",
-    title: locale === 'fr' ? "Plateforme Newsletter Partager" : "Partager Newsletter Platform",
-    description: locale === 'fr' 
-      ? "Plateforme complète de gestion de newsletters avec authentification utilisateur, création de contenu et tableau de bord analytique."
-      : "Complete newsletter management platform with user authentication, content creation, and analytics dashboard.",
-    image: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=800&h=400&fit=crop",
+    title:
+      locale === "fr"
+        ? "Plateforme Newsletter Partager"
+        : "Partager Newsletter Platform",
+    description:
+      locale === "fr"
+        ? "Plateforme complète de gestion de newsletters avec authentification utilisateur, création de contenu et tableau de bord analytique."
+        : "Complete newsletter management platform with user authentication, content creation, and analytics dashboard.",
+    image:
+      "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=800&h=400&fit=crop",
     tags: ["Next.js", "Supabase", "Stripe", "TypeScript"],
     year: 2024,
-    link: `/${locale}/projects/partager-newsletter-platform`
+    link: `/${locale}/projects/partager-newsletter-platform`,
   },
   {
     id: "climact-eco-website",
-    title: locale === 'fr' ? "Site Web Éco-Responsable Climact" : "Climact Eco-Website",
-    description: locale === 'fr' 
-      ? "Vitrine de développement web durable avec hébergement neutre en carbone et métriques de performance optimisées."
-      : "Sustainable web development showcase featuring carbon-neutral hosting and optimized performance metrics.",
-    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=400&fit=crop", 
-    tags: [locale === 'fr' ? "Durabilité" : "Sustainability", "Performance", locale === 'fr' ? "Tech Verte" : "Green Tech"],
+    title:
+      locale === "fr"
+        ? "Site Web Éco-Responsable Climact"
+        : "Climact Eco-Website",
+    description:
+      locale === "fr"
+        ? "Vitrine de développement web durable avec hébergement neutre en carbone et métriques de performance optimisées."
+        : "Sustainable web development showcase featuring carbon-neutral hosting and optimized performance metrics.",
+    image:
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=400&fit=crop",
+    tags: [
+      locale === "fr" ? "Durabilité" : "Sustainability",
+      "Performance",
+      locale === "fr" ? "Tech Verte" : "Green Tech",
+    ],
     year: 2024,
-    link: `/${locale}/projects/climact-eco-website`
+    link: `/${locale}/projects/climact-eco-website`,
   },
   {
     id: "alaya-csr-platform",
-    title: locale === 'fr' ? "Plateforme RSE Alaya" : "Alaya CSR Platform",
-    description: locale === 'fr' 
-      ? "Plateforme de gestion de Responsabilité Sociale d'Entreprise avec suivi d'impact et fonctionnalités de reporting."
-      : "Corporate Social Responsibility management platform with impact tracking and reporting features.",
-    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=400&fit=crop",
-    tags: ["React", "Node.js", locale === 'fr' ? "Analytique" : "Analytics", "CSR"],
+    title: locale === "fr" ? "Plateforme RSE Alaya" : "Alaya CSR Platform",
+    description:
+      locale === "fr"
+        ? "Plateforme de gestion de Responsabilité Sociale d'Entreprise avec suivi d'impact et fonctionnalités de reporting."
+        : "Corporate Social Responsibility management platform with impact tracking and reporting features.",
+    image:
+      "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=400&fit=crop",
+    tags: [
+      "React",
+      "Node.js",
+      locale === "fr" ? "Analytique" : "Analytics",
+      "CSR",
+    ],
     year: 2023,
-    link: `/${locale}/projects/alaya-csr-platform`
-  }
+    link: `/${locale}/projects/alaya-csr-platform`,
+  },
 ];
 
 const getServices = (locale: string) => [
   {
-    title: locale === 'fr' ? "Développement Web & Mobile" : "Web & Mobile Development",
-    description: locale === 'fr' 
-      ? "Applications full-stack construites avec des technologies modernes comme Next.js, React et Node.js."
-      : "Full-stack applications built with modern technologies like Next.js, React, and Node.js.",
-    features: locale === 'fr' 
-      ? ["Design Responsive", "Optimisation Performance", "Prêt pour SEO", "Mobile-First"]
-      : ["Responsive Design", "Performance Optimization", "SEO-Ready", "Mobile-First"],
-    icon: "🚀"
+    title:
+      locale === "fr"
+        ? "Développement Web & Mobile"
+        : "Web & Mobile Development",
+    description:
+      locale === "fr"
+        ? "Applications full-stack construites avec des technologies modernes comme Next.js, React et Node.js."
+        : "Full-stack applications built with modern technologies like Next.js, React, and Node.js.",
+    features:
+      locale === "fr"
+        ? [
+            "Design Responsive",
+            "Optimisation Performance",
+            "Prêt pour SEO",
+            "Mobile-First",
+          ]
+        : [
+            "Responsive Design",
+            "Performance Optimization",
+            "SEO-Ready",
+            "Mobile-First",
+          ],
+    icon: "🚀",
   },
   {
-    title: locale === 'fr' ? "Sites Web Éco-Responsables" : "Eco-friendly Websites",
-    description: locale === 'fr' 
-      ? "Solutions web durables qui minimisent l'impact environnemental tout en maximisant les performances."
-      : "Sustainable web solutions that minimize environmental impact while maximizing performance.",
-    features: locale === 'fr' 
-      ? ["Hébergement Neutre Carbone", "Code Optimisé", "Analytics Verts", "Énergie Efficace"]
-      : ["Carbon-Neutral Hosting", "Optimized Code", "Green Analytics", "Energy Efficient"],
-    icon: "🌱"
-  }
+    title:
+      locale === "fr" ? "Sites Web Éco-Responsables" : "Eco-friendly Websites",
+    description:
+      locale === "fr"
+        ? "Solutions web durables qui minimisent l'impact environnemental tout en maximisant les performances."
+        : "Sustainable web solutions that minimize environmental impact while maximizing performance.",
+    features:
+      locale === "fr"
+        ? [
+            "Hébergement Neutre Carbone",
+            "Code Optimisé",
+            "Analytics Verts",
+            "Énergie Efficace",
+          ]
+        : [
+            "Carbon-Neutral Hosting",
+            "Optimized Code",
+            "Green Analytics",
+            "Energy Efficient",
+          ],
+    icon: "🌱",
+  },
 ];
 
-export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
+
+  console.log(locale, "locale");
+
   setRequestLocale(locale);
-  const t = await getTranslations('home');
-  
+  const t = await getTranslations("home");
+
   const featuredProjects = getFeaturedProjects(locale);
   const services = getServices(locale);
 
@@ -82,21 +143,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              {t('hero.title')}
+              {t("hero.title")}
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-              {t('hero.subtitle')}
+              {t("hero.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button size="lg" asChild>
-                <Link href={`/${locale}/contact`}>
-                  {t('hero.cta')}
-                </Link>
+                <Link href={`/${locale}/contact`}>{t("hero.cta")}</Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href={`/${locale}/projects`}>
-                  {t('hero.scroll')}
-                </Link>
+                <Link href={`/${locale}/projects`}>{t("hero.scroll")}</Link>
               </Button>
             </div>
           </div>
@@ -111,18 +168,23 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              {t('services.title')}
+              {t("services.title")}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {t('services.subtitle')}
+              {t("services.subtitle")}
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:max-w-4xl lg:mx-auto">
             {services.map((service, index) => (
-              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg">
+              <Card
+                key={index}
+                className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg"
+              >
                 <CardHeader className="text-center pb-4">
                   <div className="text-4xl mb-4">{service.icon}</div>
-                  <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
+                  <CardTitle className="text-xl mb-2">
+                    {service.title}
+                  </CardTitle>
                   <CardDescription className="text-base">
                     {service.description}
                   </CardDescription>
@@ -130,7 +192,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <CardContent>
                   <ul className="space-y-3">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center gap-3">
+                      <li
+                        key={featureIndex}
+                        className="flex items-center gap-3"
+                      >
                         <CheckIcon className="h-5 w-5 text-green-500 flex-shrink-0" />
                         <span className="text-sm">{feature}</span>
                       </li>
@@ -143,7 +208,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div className="text-center mt-12">
             <Button size="lg" asChild>
               <Link href={`/${locale}/services`}>
-                {locale === 'fr' ? 'Voir Tous les Services' : 'View All Services'}
+                {locale === "fr"
+                  ? "Voir Tous les Services"
+                  : "View All Services"}
               </Link>
             </Button>
           </div>
@@ -155,16 +222,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              {t('projects.title')}
+              {t("projects.title")}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {t('projects.subtitle')}
+              {t("projects.subtitle")}
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {featuredProjects.map((project) => (
-              <ProjectCard 
-                key={project.id} 
+              <ProjectCard
+                key={project.id}
                 title={project.title}
                 description={project.description}
                 imageUrl={project.image}
@@ -178,7 +245,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div className="text-center mt-12">
             <Button size="lg" variant="outline" asChild>
               <Link href={`/${locale}/projects`}>
-                {locale === 'fr' ? 'Voir Tous les Projets' : 'View All Projects'}
+                {locale === "fr"
+                  ? "Voir Tous les Projets"
+                  : "View All Projects"}
               </Link>
             </Button>
           </div>
@@ -190,15 +259,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
-              {t('cta.title')}
+              {t("cta.title")}
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              {t('cta.subtitle')}
+              {t("cta.subtitle")}
             </p>
             <Button size="lg" asChild>
-              <Link href={`/${locale}/contact`}>
-                {t('cta.button')}
-              </Link>
+              <Link href={`/${locale}/contact`}>{t("cta.button")}</Link>
             </Button>
           </div>
         </div>
