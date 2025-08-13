@@ -11,9 +11,9 @@ import { Badge } from '@/components/ui/badge';
 const prisma = new PrismaClient();
 
 interface ServicePageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -48,7 +48,8 @@ async function getService(slug: string) {
 }
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
-  const service = await getService(params?.slug || '');
+  const { slug } = await params;
+  const service = await getService(slug || '');
   
   if (!service) {
     return {
@@ -63,7 +64,8 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {
-  const service = await getService(params?.slug || '');
+  const { slug } = await params;
+  const service = await getService(slug || '');
 
   if (!service) {
     notFound();

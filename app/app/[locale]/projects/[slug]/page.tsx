@@ -12,9 +12,9 @@ import { Badge } from '@/components/ui/badge';
 const prisma = new PrismaClient();
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -49,7 +49,8 @@ async function getProject(slug: string) {
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-  const project = await getProject(params?.slug || '');
+  const { slug } = await params;
+  const project = await getProject(slug || '');
   
   if (!project) {
     return {
@@ -67,7 +68,8 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const project = await getProject(params?.slug || '');
+  const { slug } = await params;
+  const project = await getProject(slug || '');
 
   if (!project) {
     notFound();

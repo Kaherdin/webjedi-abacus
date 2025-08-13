@@ -84,7 +84,7 @@ export default function ContactPage() {
               <CardContent className="space-y-3">
                 <div className="space-y-2">
                   <Link 
-                    href="/services/ai-strategy-automation-training" 
+                    href={"/services/ai-strategy-automation-training" as any}
                     className="block p-3 rounded-md border hover:bg-muted/50 transition-colors"
                   >
                     <h4 className="font-medium text-sm">AI Strategy & Automation</h4>
@@ -92,7 +92,7 @@ export default function ContactPage() {
                   </Link>
                   
                   <Link 
-                    href="/services/web-mobile-development" 
+                    href={"/services/web-mobile-development" as any}
                     className="block p-3 rounded-md border hover:bg-muted/50 transition-colors"
                   >
                     <h4 className="font-medium text-sm">Web & Mobile Apps</h4>
@@ -100,7 +100,7 @@ export default function ContactPage() {
                   </Link>
                   
                   <Link 
-                    href="/services/eco-friendly-websites" 
+                    href={"/services/eco-friendly-websites" as any}
                     className="block p-3 rounded-md border hover:bg-muted/50 transition-colors"
                   >
                     <h4 className="font-medium text-sm">Eco-friendly Websites</h4>

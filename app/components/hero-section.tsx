@@ -79,7 +79,7 @@ export default function HeroSection({
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <Button asChild size="lg" className="text-lg px-8">
-              <Link href={ctaLink}>
+              <Link href={ctaLink as any}>
                 {ctaText}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

@@ -1,6 +1,6 @@
 
 import Link from "next/link";
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { setRequestLocale } from 'next-intl/server';
 import { ArrowDownIcon, CheckIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -67,12 +67,13 @@ const getServices = (locale: string) => [
   }
 ];
 
-export default function HomePage({ params }: { params: { locale: string } }) {
-  setRequestLocale(params.locale);
-  const t = useTranslations('home');
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('home');
   
-  const featuredProjects = getFeaturedProjects(params.locale);
-  const services = getServices(params.locale);
+  const featuredProjects = getFeaturedProjects(locale);
+  const services = getServices(locale);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -88,12 +89,12 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button size="lg" asChild>
-                <Link href={`/${params.locale}/contact`}>
+                <Link href={`/${locale}/contact`}>
                   {t('hero.cta')}
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href={`/${params.locale}/projects`}>
+                <Link href={`/${locale}/projects`}>
                   {t('hero.scroll')}
                 </Link>
               </Button>
@@ -141,8 +142,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           </div>
           <div className="text-center mt-12">
             <Button size="lg" asChild>
-              <Link href={`/${params.locale}/services`}>
-                {params.locale === 'fr' ? 'Voir Tous les Services' : 'View All Services'}
+              <Link href={`/${locale}/services`}>
+                {locale === 'fr' ? 'Voir Tous les Services' : 'View All Services'}
               </Link>
             </Button>
           </div>
@@ -176,8 +177,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           </div>
           <div className="text-center mt-12">
             <Button size="lg" variant="outline" asChild>
-              <Link href={`/${params.locale}/projects`}>
-                {params.locale === 'fr' ? 'Voir Tous les Projets' : 'View All Projects'}
+              <Link href={`/${locale}/projects`}>
+                {locale === 'fr' ? 'Voir Tous les Projets' : 'View All Projects'}
               </Link>
             </Button>
           </div>
@@ -195,7 +196,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               {t('cta.subtitle')}
             </p>
             <Button size="lg" asChild>
-              <Link href={`/${params.locale}/contact`}>
+              <Link href={`/${locale}/contact`}>
                 {t('cta.button')}
               </Link>
             </Button>

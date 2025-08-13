@@ -96,7 +96,7 @@ export default function ProjectCard({
           </div>
 
           <Button asChild variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-            <Link href={`/projects/${slug}`}>
+            <Link href={`/projects/${slug}` as any}>
               <span>View Case Study</span>
               <ExternalLink className="ml-2 h-4 w-4" />
             </Link>

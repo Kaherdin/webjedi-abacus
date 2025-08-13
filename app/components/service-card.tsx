@@ -93,7 +93,7 @@ export default function ServiceCard({
           </div>
 
           <Button asChild variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-            <Link href={`/services/${slug}`}>
+            <Link href={`/services/${slug}` as any}>
               <span>Learn More</span>
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>

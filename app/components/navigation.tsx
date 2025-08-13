@@ -56,7 +56,7 @@ export default function Navigation() {
             {navigation?.map?.((item) => (
               <Link
                 key={item?.name || ''}
-                href={item?.href || '#'}
+                href={(item?.href || '#') as any}
                 className={cn(
                   'text-sm font-medium transition-colors hover:text-primary',
                   pathname === item?.href
@@ -80,12 +80,12 @@ export default function Navigation() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem asChild>
-                  <Link href={switchLocale('en')}>
+                  <Link href={switchLocale('en') as any}>
                     🇺🇸 English
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href={switchLocale('fr')}>
+                  <Link href={switchLocale('fr') as any}>
                     🇫🇷 Français
                   </Link>
                 </DropdownMenuItem>
@@ -122,7 +122,7 @@ export default function Navigation() {
               {navigation?.map?.((item) => (
                 <Link
                   key={item?.name || ''}
-                  href={item?.href || '#'}
+                  href={(item?.href || '#') as any}
                   className={cn(
                     'block px-3 py-2 text-base font-medium transition-colors hover:text-primary',
                     pathname === item?.href

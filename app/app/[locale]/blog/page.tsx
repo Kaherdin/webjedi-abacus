@@ -1,5 +1,5 @@
 
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { setRequestLocale } from 'next-intl/server';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -82,12 +82,13 @@ const mockPostsFr = [
   }
 ];
 
-export default function BlogPage({ params }: { params: { locale: string } }) {
-  setRequestLocale(params.locale);
-  const t = useTranslations('blog');
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('blog');
   
-  const posts = params.locale === 'fr' ? mockPostsFr : mockPosts;
-  const dateLocale = params.locale === 'fr' ? fr : enUS;
+  const posts = locale === 'fr' ? mockPostsFr : mockPosts;
+  const dateLocale = locale === 'fr' ? fr : enUS;
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -100,7 +101,7 @@ export default function BlogPage({ params }: { params: { locale: string } }) {
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
-          <Link key={post.id} href={`/${params.locale}/blog/${post.slug}`}>
+          <Link key={post.id} href={`/${locale}/blog/${post.slug}`}>
             <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
               <div className="aspect-video relative overflow-hidden">
                 <Image
