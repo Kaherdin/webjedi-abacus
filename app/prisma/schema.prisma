@@ -57,3 +57,21 @@ model Lead {
 
   @@map("leads")
 }
+
+model Post {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  heroImg     String?
+  author      String
+  publishedAt DateTime
+  body        String   @db.Text
+  excerpt     String?  @db.Text
+  tags        String[] // Array of tags
+  locale      String   @default("en") // "en" or "fr"
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("posts")
+}

@@ -1,0 +1,75 @@
+
+{
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Projects",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "Full-Stack Developer & AI Specialist",
+      "subtitle": "Crafting modern, eco-friendly web solutions that convert visitors into customers",
+      "cta": "Start Your Project",
+      "scroll": "Discover my work"
+    },
+    "services": {
+      "title": "How I Can Help You",
+      "subtitle": "From concept to deployment, I build digital solutions that grow your business"
+    },
+    "projects": {
+      "title": "Recent Projects",
+      "subtitle": "Real-world applications built with modern technologies"
+    },
+    "cta": {
+      "title": "Ready to Start Your Project?",
+      "subtitle": "Let's discuss how I can help bring your vision to life",
+      "button": "Get Started"
+    }
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Comprehensive web development solutions tailored to your needs"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Showcasing real-world applications and their impact"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Insights on web development, AI, and digital innovation",
+    "readMore": "Read More",
+    "publishedOn": "Published on",
+    "by": "by",
+    "tags": "Tags",
+    "relatedPosts": "Related Posts"
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Passionate about creating efficient, sustainable digital solutions"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's discuss your project",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "subject": "Subject", 
+      "message": "Message",
+      "service": "Service Interest",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Error sending message. Please try again."
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "notFound": "Page not found",
+    "backToHome": "Back to Home"
+  }
+}
